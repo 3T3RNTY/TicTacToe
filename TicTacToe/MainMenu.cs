@@ -5,6 +5,9 @@ namespace TicTacToe
     public partial class MainMenu : Form
     {
         int turn = 1;
+        int player1Score;
+        int player2Score;
+
         Button button;
         char[,] list;
         public MainMenu()
@@ -17,15 +20,17 @@ namespace TicTacToe
         {
             char c ='-';
             var button = (Button)sender;
-            if (turn % 2 == 0)
+            // First Player
+            if (turn % 2 == 1)
             {
-                button.Text = "X";
-                c = 'X';
-            }
-            else if(turn % 2 == 1) 
-            {
-                button.Text="O";
+                button.Text = "O";
                 c = 'O';
+            }
+            // Second Player
+            else if(turn % 2 == 0) 
+            {
+                button.Text="X";
+                c = 'X';
             }
 
             button.Enabled = false;
@@ -61,7 +66,98 @@ namespace TicTacToe
         }
         public void Check(int i, int j, char c)
         {
-         
+            // Orta kontrol
+            if (i > 0 && i < list.GetLength(1) - 1)
+            {
+                // Ortadan üst alt kontrol
+                if (list[i - 1, j] == c && list[i + 1, j] == c)
+                {
+                    list[i - 1, j] = '*';
+                    list[i, j] = '*';
+                    list[i + 1, j] = '*';
+
+                    Score(c);
+                }
+            }
+
+            if (j > 0 && j < list.GetLength(1) - 1)
+            {
+                // Ortadan sað sol kontrol
+                if (list[i, j - 1] == c && list[i, j + 1] == c)
+                {
+                    list[i, j - 1] = '*';
+                    list[i, j] = '*';
+                    list[i, j + 1] = '*';
+
+                    Score(c);
+                }
+            }
+            //Uç alt üst kontrol
+            if (i > 1)
+            {
+                // Üstten Alt kontrol
+                if (list[i - 2, j] == c && list[i - 1, j] == c)
+                {
+                    list[i - 2, j] = '*';
+                    list[i - 1, j] = '*';
+                    list[i, j] = '*';
+
+                    Score(c);
+                }
+            }
+            if (i < list.GetLength(0) - 2)
+            {
+                // Alttan üst kontrol
+                if (list[i + 2, j] == c && list[i + 1, j] == c)
+                {
+                    list[i + 2, j] = '*';
+                    list[i + 1, j] = '*';
+                    list[i, j] = '*';
+
+                    Score(c);
+                }
+            }
+            // Uç sað sol kontrol
+            if (j > 1)
+            {
+                // Üstten Alt kontrol
+                if (list[i, j - 2] == c && list[i, j - 1] == c)
+                {
+                    list[i, j - 2] = '*';
+                    list[i, j - 1] = '*';
+                    list[i, j] = '*';
+
+                    Score(c);
+                }
+            }
+            if (j < list.GetLength(1) - 2)
+            {
+                // Alttan üst kontrol
+                if (list[i, j + 2] == c && list[i, j + 1] == c)
+                {
+                    list[i, j + 2] = '*';
+                    list[i, j + 1] = '*';
+                    list[i, j] = '*';
+
+                    Score(c);
+                }
+            }
+
+            EndGame();
+        }
+
+        public void Score(char c)
+        {
+            if (c == 'O')
+                player1Score++;
+            else
+                player2Score++;
+
+            playerScore1.Text = "Score: " + player1Score;          
+            playerScore2.Text = "Score: " + player2Score;
+
+            playerScore1.Show();
+            playerScore2.Show();
         }
         public void Create(int size)
         {
@@ -99,7 +195,31 @@ namespace TicTacToe
                 y += 65;
             }
         }
-        
-            
+        public void EndGame()
+        {
+            for (int i= 0; i < list.GetLength(0); i++)
+            {
+                for(int j= 0; j < list.GetLength(1); j++)
+                {
+                    if ( list[i,j] == '-')
+                    {
+                        return;
+                    }
+                    
+                }
+            }
+            if (player1Score > player2Score)
+            {
+                MessageBox.Show(" Player 1 Wins!");
+            }
+            else if (player1Score < player2Score)
+            {
+                MessageBox.Show(" Player 2 Wins!");
+            }
+            else
+            {
+                MessageBox.Show(" It's a Draw!");
+            }
+        }
     }
 }

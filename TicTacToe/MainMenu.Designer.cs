@@ -100,9 +100,9 @@ namespace TicTacToe
             playerScore1.Font = new Font("Unispace", 13.7999992F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 162);
             playerScore1.Location = new Point(80, 150);
             playerScore1.Name = "playerScore1";
-            playerScore1.Size = new Size(110, 28);
+            playerScore1.Size = new Size(124, 28);
             playerScore1.TabIndex = 7;
-            playerScore1.Text = "Score: ";
+            playerScore1.Text = "Score: 0";
             playerScore1.Visible = false;
             // 
             // playerScore2
@@ -111,9 +111,9 @@ namespace TicTacToe
             playerScore2.Font = new Font("Unispace", 13.7999992F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 162);
             playerScore2.Location = new Point(80, 300);
             playerScore2.Name = "playerScore2";
-            playerScore2.Size = new Size(110, 28);
+            playerScore2.Size = new Size(124, 28);
             playerScore2.TabIndex = 8;
-            playerScore2.Text = "Score: ";
+            playerScore2.Text = "Score: 0";
             playerScore2.Visible = false;
             // 
             // MainMenu
