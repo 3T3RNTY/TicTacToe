@@ -34,6 +34,7 @@ namespace TicTacToe
             player2 = new Label();
             playerScore1 = new Label();
             playerScore2 = new Label();
+            restartButton = new Button();
             SuspendLayout();
             // 
             // button3x3
@@ -116,12 +117,26 @@ namespace TicTacToe
             playerScore2.Text = "Score: 0";
             playerScore2.Visible = false;
             // 
+            // restartButton
+            // 
+            restartButton.BackColor = Color.DarkSeaGreen;
+            restartButton.Font = new Font("Unispace", 12F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            restartButton.Location = new Point(80, 391);
+            restartButton.Name = "restartButton";
+            restartButton.Size = new Size(130, 35);
+            restartButton.TabIndex = 9;
+            restartButton.Text = "Restart";
+            restartButton.UseVisualStyleBackColor = false;
+            restartButton.Visible = false;
+            restartButton.Click += restartButton_Click;
+            // 
             // MainMenu
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.SteelBlue;
             ClientSize = new Size(882, 553);
+            Controls.Add(restartButton);
             Controls.Add(playerScore2);
             Controls.Add(button3x3);
             Controls.Add(playerScore1);
@@ -144,5 +159,6 @@ namespace TicTacToe
         private Label player2;
         private Label playerScore1;
         private Label playerScore2;
+        private Button restartButton;
     }
 }
