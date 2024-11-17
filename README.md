@@ -1,0 +1,4 @@
+- Classic Tic-Tac-Toe Game
+- Has 3x3, 5x5, 7x7 game modes
+- Player vs Player ( No computer )
+- Can Check for vertical and horizontal but not diagonal 
